@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from reservations.views import home
 from reservations.views import AddRoom
-from reservations.views import room_list
+from reservations.views import RoomList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
     path('room/new/', AddRoom.as_view()),
-    path('rooms/', room_list),
+    path('rooms/', RoomList.as_view()),
 ]

@@ -31,8 +31,9 @@ class AddRoom(View):
         return render(request, 'add_room.html', context={'message': message})
 
 
-def room_list(request):
-    context = {
-        'rooms': Room.objects.all().order_by("name")
-    }
-    return render(request, 'room_list.html', context=context)
+class RoomList(View):
+    def get(self, request):
+        context = {
+            'rooms': Room.objects.all().order_by("name")
+        }
+        return render(request, 'room_list.html', context=context)
