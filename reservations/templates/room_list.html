@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!-- Nav -->
+<header class="page-header">
+    <div class="container">
+        <h1><a href="/home/">Conference room rental system</a></h1>
+    </div>
+</header>
+
+
+<nav>
+  <a class="nav-item nav-link active" href="/rooms/">Room list</a>
+  <a class="nav-item nav-link" href="/room/new/">Add room</a>
+</nav>
+<!-- Nav -->
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Availability</th>
+        <th>Projector</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Book</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for room in rooms %}
+    <tr>
+        <td>{{ room.name }}</td>
+        <td>{{ room.capacity }}</td>
+        <td>Availability</td>
+        <td>{{ room.projector_availability }}</td>
+        <td><a href="/room/modify/{{ room.id }}/"><button class="btn">Edit</button></a></td>
+        <td><a href="/room/delete/{{ room.id }}/"><button class="btn">Delete</button></a></td>
+        <td><a href="/room/reserve/{{ room.id }}/"><button class="btn">Reserve</button></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <span class="text-muted">Michał Jemieljańczuk</span>
+</footer>
+<!-- Footer -->
+</body>
+</html>
