@@ -21,7 +21,7 @@
 </nav>
 <!-- Nav -->
 
-<form action="/add-person/" method="POST">
+<form action="" method="POST">
     {% csrf_token %}
     <label>Name:
         <input type="string" name="name">
@@ -42,6 +42,7 @@
 
     <button type="submit">Submit</button>
 </form>
+{{ message }}
 
 
 
