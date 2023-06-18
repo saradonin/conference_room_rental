@@ -2,6 +2,25 @@ body {
     background: antiquewhite;
 }
 
+
+.page-header {
+    background-color: lightseagreen;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+    font-family: 'Arial', cursive;
+}
+
+
 .footer {
     position: fixed;
     left: 0;
