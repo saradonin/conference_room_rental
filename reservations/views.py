@@ -29,3 +29,10 @@ class AddRoom(View):
             message = f"Room {name} added successfully!"
 
         return render(request, 'add_room.html', context={'message': message})
+
+
+def room_list(request):
+    context = {
+        'rooms': Room.objects.all().order_by("name")
+    }
+    return render(request, 'room_list.html', context=context)
