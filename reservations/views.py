@@ -47,3 +47,12 @@ class DeleteRoom(View):
         room = Room.objects.get(id=room_id)
         room.delete()
         return render(request, 'room_list.html', context=context)
+
+
+class ModifyRoom(View):
+    def get(self, request, room_id):
+        context = {'room': Room.objects.get(id=room_id)}
+        return render(request, 'modify_room.html', context=context)
+
+    def post(self, request):
+        pass
