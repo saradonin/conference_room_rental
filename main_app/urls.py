@@ -19,10 +19,13 @@ from django.urls import path
 from reservations.views import home
 from reservations.views import AddRoom
 from reservations.views import RoomList
+from reservations.views import DeleteRoom
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
     path('room/new/', AddRoom.as_view()),
     path('rooms/', RoomList.as_view()),
+    path('room/delete/<int:id>/', DeleteRoom.as_view()),
 ]
