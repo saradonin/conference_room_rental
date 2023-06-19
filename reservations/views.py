@@ -59,20 +59,33 @@ class ModifyRoom(View):
         name = request.POST.get('name')
         capacity = int(request.POST.get('capacity'))
         projector = request.POST.get('projector')
+        room = Room.objects.get(id=room_id)
 
-        # validate data
-        if name in [room.name for room in Room.objects.all()]:
+        # validete name
+        if name != room.name and name in [r.name for r in Room.objects.all()]:
             message = f"Room {name} already exists!"
-            return render(request, 'modify_room.html', {'message': message, })
+            context = {
+                'room': room,
+                'message': message
+            }
+            return render(request, 'modify_room.html', context=context)
+
+        # validate capacity
         elif not isinstance(capacity, int) or capacity < 0:
             message = f"Room capacity must be positive integer!"
-            return render(request, 'modify_room.html', {'message': message, })
+            context = {
+                'room': room,
+                'message': message
+            }
+            return render(request, 'modify_room.html', context=context)
+
+        # edit room data
         else:
-            room = Room.objects.get(id=room_id)
             room.name = name
             room.capacity = capacity
             room.projector_availability = projector
             room.save()
-
-        context = {'rooms': Room.objects.all().order_by("name")}
-        return render(request, 'room_list.html', context=context)
+            context = {
+                'rooms': Room.objects.all().order_by("name")
+            }
+            return render(request, 'room_list.html', context=context)
