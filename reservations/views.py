@@ -89,3 +89,12 @@ class ModifyRoom(View):
                 'rooms': Room.objects.all().order_by("name")
             }
             return render(request, 'room_list.html', context=context)
+
+
+class Reservation(View):
+    def get(self, request, room_id):
+        context = {'room': Room.objects.get(id=room_id)}
+        return render(request, 'reservation.html', context=context)
+
+    def get(self, request, room_id):
+        pass
