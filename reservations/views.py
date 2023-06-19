@@ -41,11 +41,11 @@ class RoomList(View):
 
 class DeleteRoom(View):
     def get(self, request, room_id):
+        room = Room.objects.get(id=room_id)
+        room.delete()
         context = {
             'rooms': Room.objects.all().order_by("name")
         }
-        room = Room.objects.get(id=room_id)
-        room.delete()
         return render(request, 'room_list.html', context=context)
 
 
@@ -54,5 +54,25 @@ class ModifyRoom(View):
         context = {'room': Room.objects.get(id=room_id)}
         return render(request, 'modify_room.html', context=context)
 
-    def post(self, request):
-        pass
+    def post(self, request, room_id):
+        # get input data
+        name = request.POST.get('name')
+        capacity = int(request.POST.get('capacity'))
+        projector = request.POST.get('projector')
+
+        # validate data
+        if name in [room.name for room in Room.objects.all()]:
+            message = f"Room {name} already exists!"
+            return render(request, 'modify_room.html', {'message': message, })
+        elif not isinstance(capacity, int) or capacity < 0:
+            message = f"Room capacity must be positive integer!"
+            return render(request, 'modify_room.html', {'message': message, })
+        else:
+            room = Room.objects.get(id=room_id)
+            room.name = name
+            room.capacity = capacity
+            room.projector_availability = projector
+            room.save()
+
+        context = {'rooms': Room.objects.all().order_by("name")}
+        return render(request, 'room_list.html', context=context)
