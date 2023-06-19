@@ -37,3 +37,10 @@ class RoomList(View):
             'rooms': Room.objects.all().order_by("name")
         }
         return render(request, 'room_list.html', context=context)
+
+
+class DeleteRoom(View):
+    def get(self, request):
+        pass
+
+
