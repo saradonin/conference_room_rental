@@ -1,6 +1,7 @@
 
 body {
     background: #EFF0F4;
+    margin: 0px;
 }
 
 
@@ -34,23 +35,23 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 /* color of links on hover */
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: #415F9D;
     color: black;
 }
 
 /* color to the active/current link */
 .topnav a.active {
-    background-color: #415F9D;
+    background-color: lightseagreen;
     color: white;
 }
 
 .table {
-    padding: 20px;
+    margin: 20px;
     border-style: hidden;
     box-shadow: black;
     border-color: #373A40;
@@ -59,6 +60,7 @@ body {
 
 form {
     font-size: 18px;
+    margin: 20px;
 }
 
 input {
