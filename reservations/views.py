@@ -96,5 +96,19 @@ class Reservation(View):
         context = {'room': Room.objects.get(id=room_id)}
         return render(request, 'reservation.html', context=context)
 
-    def get(self, request, room_id):
-        pass
+    def post(self, request, room_id):
+        # get input data
+        room = Room.objects.get(id=room_id)
+        reservation_date = request.POST.get('date')
+        comment = request.POST.get('comment')
+
+        # TODO validete data
+
+        # TODO create object
+
+
+        # return to room list
+        context = {
+            'rooms': Room.objects.all().order_by("name")
+        }
+        return render(request, 'room_list.html', context=context)
