@@ -4,11 +4,10 @@ body {
     margin: 0px;
 }
 
-
 .page-header {
     background-color: #415F9D;
     margin: 0px;
-    padding: 20px 20px 20px 40px;
+    padding: 10px 20px 10px 40px;
 }
 
 .page-header h1,
@@ -18,7 +17,6 @@ body {
     color: #EFF0F4;
     font-size: 32pt;
     text-decoration: none;
-    font-family: 'Arial', cursive;
 }
 
 /* Add a black background color to the top navigation */
@@ -41,7 +39,6 @@ body {
 /* color of links on hover */
 .topnav a:hover {
     background-color: #415F9D;
-    color: black;
 }
 
 /* color to the active/current link */
@@ -51,11 +48,36 @@ body {
 }
 
 .table {
-    margin: 20px;
-    border-style: hidden;
-    box-shadow: black;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border-color: #373A40;
     font-size: 18px;
+}
+
+table th {
+    background-color: #415F9D;
+    color: #EFF0F4;
+    padding: 10px;
+    letter-spacing: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+}
+table tr:nth-child(even) td {
+  background-color: #EFF0F4;
+}
+
+table tr:hover td {
+  background-color: #cccccc;
+}
+
+table td {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 form {
@@ -64,30 +86,25 @@ form {
 }
 
 input {
-    margin: 5px;
-    padding: 5px;
-    border-style: solid;
-    box-shadow: black;
-    border-color: #373A40;
+    margin: 10px;
+    padding: 6px;
     font-size: 18px;
 }
 
-td {
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
+
 
 .btn {
+    margin: 5px;
     padding: 5px;
-    color: black;
-    background: #D3D6DB;
-    width: 80px;
+    width: 100px;
     font-size: 18px;
 }
 
 .msg {
-    font-size: 18px;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
 }
 
 .footer {
