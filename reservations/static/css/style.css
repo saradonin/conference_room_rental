@@ -8,7 +8,6 @@ body {
 .page-header {
     background-color: #415F9D;
     margin: 0px;
-    margin-bottom: 20px;
     padding: 20px 20px 20px 40px;
 }
 
@@ -24,6 +23,7 @@ body {
 
 /* Add a black background color to the top navigation */
 .topnav {
+    margin: 0px;
     background-color: #233B6E;
     overflow: hidden;
 }
@@ -35,7 +35,7 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 /* color of links on hover */
@@ -83,6 +83,10 @@ td {
     color: black;
     background: #D3D6DB;
     width: 80px;
+    font-size: 18px;
+}
+
+.msg {
     font-size: 18px;
 }
 
