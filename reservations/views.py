@@ -43,9 +43,6 @@ class DeleteRoom(View):
     def get(self, request, room_id):
         room = Room.objects.get(id=room_id)
         room.delete()
-        context = {
-            'rooms': Room.objects.all().order_by("name")
-        }
         return redirect("/rooms/")
 
 
@@ -85,9 +82,6 @@ class ModifyRoom(View):
             room.capacity = capacity
             room.projector_availability = projector
             room.save()
-            context = {
-                'rooms': Room.objects.all().order_by("name")
-            }
             return redirect("/rooms/")
 
 
@@ -106,11 +100,6 @@ class Reservation(View):
 
         # TODO validate past date
 
-        # TODO create object
+        # create object
         Reservation.objects.create(room=room, date=reservation_date, comment=comment)
-
-        # return to room list
-        context = {
-            'rooms': Room.objects.all().order_by("name")
-        }
         return redirect("/rooms/")
