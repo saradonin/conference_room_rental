@@ -20,6 +20,8 @@ from reservations.views import home
 from reservations.views import AddRoom
 from reservations.views import RoomList
 from reservations.views import DeleteRoom
+from reservations.views import ModifyRoom
+
 
 
 urlpatterns = [
@@ -28,4 +30,5 @@ urlpatterns = [
     path('room/new/', AddRoom.as_view()),
     path('rooms/', RoomList.as_view()),
     path('room/delete/<int:room_id>/', DeleteRoom.as_view()),
+    path('room/modify/<int:room_id>/', ModifyRoom.as_view()),
 ]
