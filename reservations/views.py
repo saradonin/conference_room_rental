@@ -83,7 +83,7 @@ class ModifyRoom(View):
         return redirect("/rooms/")
 
 
-class Reservation(View):
+class ReserveRoom(View):
     def get(self, request, room_id):
         context = {'room': Room.objects.get(id=room_id)}
         return render(request, 'reservation.html', context=context)
