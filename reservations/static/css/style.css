@@ -1,10 +1,10 @@
 body {
-    background: #f5f3f0;
+    background: #EFF0F4;
 }
 
 
 .page-header {
-    background-color: #2b3742;
+    background-color: #415F9D;
     margin: -10px;
     margin-bottom: 20px;
     padding: 20px 20px 20px 40px;
@@ -14,15 +14,15 @@ body {
 .page-header h1 a,
 .page-header h1 a:visited,
 .page-header h1 a:active {
-    color: #c9b385;
-    font-size: 36pt;
+    color: #EFF0F4;
+    font-size: 32pt;
     text-decoration: none;
     font-family: 'Arial', cursive;
 }
 
 nav {
     padding: 20px;
-    border-color: #2b3742;
+    border-color: #233B6E;
     font-size: 24px;
 }
 
@@ -30,7 +30,7 @@ nav {
     padding: 20px;
     border-style: hidden;
     box-shadow: black;
-    border-color: #2b3742;
+    border-color: #373A40;
     font-size: 18px;
 }
 
@@ -42,8 +42,8 @@ td {
 
 .btn {
     padding: 5px;
-    color: black;
-    background: #c9b385;
+    color: #233B6E;
+    background: #D3D6DB;
     width: 80px;
     font-size: 18px;
 }
@@ -53,7 +53,7 @@ td {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #2b3742;
-    color: #c9b385;
+    background-color: #233B6E;
+    color: #EFF0F4;
     text-align: center;
 }
