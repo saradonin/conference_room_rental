@@ -94,8 +94,13 @@ class Reservation(View):
         reservation_date = request.POST.get('date')
         comment = request.POST.get('comment')
 
-
-        # TODO validate if reserved
+        # validate if reserved
+        if Reservation.objects.filter(room=room, date=reservation_date):
+            context = {
+                'room': room,
+                'message': "This room has already been reserved!"
+            }
+            return render(request, 'reservation.html', context=context)
 
         # validate past date
         if reservation_date < str(datetime.date.today()):
@@ -104,7 +109,6 @@ class Reservation(View):
                 'message': "Past date is not a valid option."
             }
             return render(request, 'reservation.html', context=context)
-
 
         # create object
         Reservation.objects.create(room=room, date=reservation_date, comment=comment)
