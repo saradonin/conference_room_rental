@@ -1,11 +1,11 @@
 body {
-    background: antiquewhite;
+    background: #f5f3f0;
 }
 
 
 .page-header {
-    background-color: lightseagreen;
-    margin-top: 0;
+    background-color: #2b3742;
+    margin: -10px;
     margin-bottom: 20px;
     padding: 20px 20px 20px 40px;
 }
@@ -14,17 +14,38 @@ body {
 .page-header h1 a,
 .page-header h1 a:visited,
 .page-header h1 a:active {
-    color: #ffffff;
+    color: #c9b385;
     font-size: 36pt;
     text-decoration: none;
     font-family: 'Arial', cursive;
 }
 
+nav {
+    padding: 20px;
+    border-color: #2b3742;
+    font-size: 24px;
+}
+
+.table {
+    padding: 20px;
+    border-style: hidden;
+    box-shadow: black;
+    border-color: #2b3742;
+    font-size: 18px;
+}
+
+td {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 .btn {
     padding: 5px;
     color: black;
-    background: lightseagreen;
+    background: #c9b385;
+    width: 80px;
+    font-size: 18px;
 }
 
 .footer {
@@ -32,7 +53,7 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: black;
-    color: white;
+    background-color: #2b3742;
+    color: #c9b385;
     text-align: center;
 }
