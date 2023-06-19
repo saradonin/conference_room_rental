@@ -34,6 +34,19 @@ nav {
     font-size: 18px;
 }
 
+form {
+    font-size: 18px;
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    border-style: solid;
+    box-shadow: black;
+    border-color: #373A40;
+    font-size: 18px;
+}
+
 td {
     padding: 5px;
     padding-left: 10px;
@@ -42,7 +55,7 @@ td {
 
 .btn {
     padding: 5px;
-    color: #233B6E;
+    color: black;
     background: #D3D6DB;
     width: 80px;
     font-size: 18px;
