@@ -40,7 +40,10 @@ class RoomList(View):
 
 
 class DeleteRoom(View):
-    def get(self, request):
-        pass
-
-
+    def get(self, request, room_id):
+        context = {
+            'rooms': Room.objects.all().order_by("name")
+        }
+        room = Room.objects.get(id=room_id)
+        room.delete()
+        return render(request, 'room_list.html', context=context)
