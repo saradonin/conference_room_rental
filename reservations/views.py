@@ -46,7 +46,7 @@ class DeleteRoom(View):
         context = {
             'rooms': Room.objects.all().order_by("name")
         }
-        return render(request, 'room_list.html', context=context)
+        return redirect("/rooms/")
 
 
 class ModifyRoom(View):
@@ -88,7 +88,7 @@ class ModifyRoom(View):
             context = {
                 'rooms': Room.objects.all().order_by("name")
             }
-            return render(request, 'room_list.html', context=context)
+            return redirect("/rooms/")
 
 
 class Reservation(View):
@@ -102,13 +102,15 @@ class Reservation(View):
         reservation_date = request.POST.get('date')
         comment = request.POST.get('comment')
 
-        # TODO validete data
+        # TODO validate if reserved
+
+        # TODO validate past date
 
         # TODO create object
-
+        Reservation.objects.create(room=room, date=reservation_date, comment=comment)
 
         # return to room list
         context = {
             'rooms': Room.objects.all().order_by("name")
         }
-        return render(request, 'room_list.html', context=context)
+        return redirect("/rooms/")
