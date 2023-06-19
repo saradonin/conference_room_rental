@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add room</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!-- Nav -->
+<header class="page-header">
+    <div class="container">
+        <h1><a href="/home/">Conference room rental system</a></h1>
+    </div>
+</header>
+
+
+<nav>
+    <a class="nav-item nav-link active" href="/rooms/">Room list</a>
+    <a class="nav-item nav-link" href="/room/new/">Add room</a>
+</nav>
+<!-- Nav -->
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <label> Name:
+        <input class="in" type="string" name="name" value="{{ room.name }}">
+    </label></br>
+
+    <label> Capacity:
+        <input type="number" name="capacity" value="{{ room.capacity }}">
+    </label></br>
+
+
+    <label> Projector availability:
+        {% if room.projector_availability = False %}
+        <label> Yes
+            <input type="radio" name="projector" value="True">
+        </label>
+        <label> No
+            <input type="radio" name="projector" value="False" checked>
+        </label>
+        {% else %}
+        <label> Yes
+            <input type="radio" name="projector" value="True" checked>
+        </label>
+        <label> No
+            <input type="radio" name="projector" value="False">
+        </label>
+        {% endif %}
+
+    </label></br>
+
+    <button class="btn" type="submit">Submit</button>
+</form>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <span class="text-muted">created by saradonin</span>
+</footer>
+<!-- Footer -->
+</body>
+</html>
