@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views import View
 from .models import Room
+from .models import Reservation
 import datetime
 
 
