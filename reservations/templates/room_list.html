@@ -21,7 +21,7 @@
 </nav>
 <!-- Nav -->
 
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>Name</th>
@@ -45,7 +45,10 @@
         <td><a href="/room/delete/{{ room.id }}/"><button class="btn">Delete</button></a></td>
         <td><a href="/room/reserve/{{ room.id }}/"><button class="btn">Reserve</button></a></td>
     </tr>
+    {% empty %}
+      <tr><td colspan="6">No rooms available</td></tr>
     {% endfor %}
+
     </tbody>
 </table>
 
