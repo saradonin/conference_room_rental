@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views import View
 from .models import Room
+import datetime
 
 
 def home(request):
@@ -58,31 +59,28 @@ class ModifyRoom(View):
         projector = request.POST.get('projector')
         room = Room.objects.get(id=room_id)
 
-        # validete name
+        # validate name
         if name != room.name and name in [r.name for r in Room.objects.all()]:
-            message = f"Room {name} already exists!"
             context = {
                 'room': room,
-                'message': message
+                'message': f"Room {name} already exists!"
             }
             return render(request, 'modify_room.html', context=context)
 
         # validate capacity
-        elif not isinstance(capacity, int) or capacity < 0:
-            message = f"Room capacity must be positive integer!"
+        if not isinstance(capacity, int) or capacity < 0:
             context = {
                 'room': room,
-                'message': message
+                'message': "Room capacity must be positive integer!"
             }
             return render(request, 'modify_room.html', context=context)
 
         # edit room data
-        else:
-            room.name = name
-            room.capacity = capacity
-            room.projector_availability = projector
-            room.save()
-            return redirect("/rooms/")
+        room.name = name
+        room.capacity = capacity
+        room.projector_availability = projector
+        room.save()
+        return redirect("/rooms/")
 
 
 class Reservation(View):
@@ -96,9 +94,17 @@ class Reservation(View):
         reservation_date = request.POST.get('date')
         comment = request.POST.get('comment')
 
+
         # TODO validate if reserved
 
-        # TODO validate past date
+        # validate past date
+        if reservation_date < str(datetime.date.today()):
+            context = {
+                'room': room,
+                'message': "Past date is not a valid option."
+            }
+            return render(request, 'reservation.html', context=context)
+
 
         # create object
         Reservation.objects.create(room=room, date=reservation_date, comment=comment)
