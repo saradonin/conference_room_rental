@@ -19,4 +19,8 @@ class Reservation(models.Model):
     comment = models.TextField(null=True)
 
     class Meta:
+        """
+        Specifies that the combination of room and date must be unique,
+        i.e., a room can only have one reservation per date.
+        """
         unique_together = ('room', 'date')
