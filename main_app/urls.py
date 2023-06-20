@@ -27,6 +27,7 @@ from reservations.views import RoomDetails
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
+    path('', home),
     path('room/new/', AddRoom.as_view()),
     path('rooms/', RoomList.as_view()),
     path('room/delete/<int:room_id>/', DeleteRoom.as_view()),
