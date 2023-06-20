@@ -45,9 +45,17 @@ class RoomList(View):
 
 class DeleteRoom(View):
     def get(self, request, room_id):
+        context = {'room': Room.objects.get(id=room_id)}
+        return render(request, 'delete_room_confirmation.html', context=context)
+
+    def post(self, request, room_id):
+        confirm = request.POST.get('confirm')
         room = Room.objects.get(id=room_id)
-        room.delete()
-        return redirect("/rooms/")
+        if confirm == "Yes":
+            room.delete()
+            return redirect("/rooms/")
+        else:
+            return redirect("/rooms/")
 
 
 class ModifyRoom(View):
