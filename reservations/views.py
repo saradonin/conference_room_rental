@@ -114,3 +114,12 @@ class ReserveRoom(View):
         # create object
         Reservation.objects.create(room=room, date=reservation_date, comment=comment)
         return redirect("/rooms/")
+
+
+class RoomDetails(View):
+    def get(self, request, room_id):
+        context = {
+            'room': Room.objects.get(id=room_id)
+        }
+        return render(request, 'room_details.html', context=context)
+
