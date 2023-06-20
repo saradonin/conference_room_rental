@@ -118,9 +118,11 @@ class ReserveRoom(View):
 
 class RoomDetails(View):
     def get(self, request, room_id):
+        room = Room.objects.get(id=room_id),
+        reservations = Reservation.objects.filter(room=room_id, date__gte=str(datetime.date.today())).order_by('date')
         context = {
-            'room': Room.objects.get(id=room_id),
-            'reservations': Room.roomreservation_set.filter(date__gte=str(datetime.date.today())).order_by('date')
+            'room': room,
+            'reservations': reservations,
         }
         return render(request, 'room_details.html', context=context)
 
