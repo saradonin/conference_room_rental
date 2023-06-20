@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!-- Nav -->
+<header class="page-header">
+    <div class="container">
+        <h1><a href="/home/">Conference room rental system</a></h1>
+    </div>
+</header>
+
+<div class="topnav">
+  <a class="active" href="/home/">Home</a>
+  <a href="/rooms/">Room list</a>
+  <a href="/room/new/">Add room</a>
+</div>
+<!-- Nav -->
+
+<table class="table">
+    <thead>
+    <tr>
+        <th colspan="2">Are you sure you want to delete room {{ room.name }}?</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <button class="btn" type="submit" name="confirm" value="True">
+                Yes
+            </button>
+        </td>
+        <td>
+            <button class="btn" type="submit" name="confirm" value="False">
+                No
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Footer -->
+<footer class="footer">
+  <span class="text-muted">created by saradonin</span>
+</footer>
+<!-- Footer -->
+</body>
+</html>
