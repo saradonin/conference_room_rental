@@ -36,11 +36,10 @@ class AddRoom(View):
 class RoomList(View):
     def get(self, request):
         rooms = Room.objects.all().order_by("name")
-        context = {'rooms': rooms}
         for room in rooms:
             reservation_dates = [reservation.date for reservation in room.reservation_set.all()]
             room.reserved = datetime.date.today() in reservation_dates
-        return render(request, 'room_list.html', context=context)
+        return render(request, 'room_list.html', context={'rooms': rooms})
 
 
 class DeleteRoom(View):
