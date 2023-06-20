@@ -35,9 +35,11 @@ class AddRoom(View):
 
 class RoomList(View):
     def get(self, request):
-        context = {
-            'rooms': Room.objects.all().order_by("name")
-        }
+        rooms = Room.objects.all().order_by("name")
+        context = {'rooms': rooms}
+        for room in rooms:
+            reservation_dates = [reservation.date for reservation in room.reservation_set.all()]
+            room.reserved = datetime.date.today() in reservation_dates
         return render(request, 'room_list.html', context=context)
 
 
@@ -86,7 +88,11 @@ class ModifyRoom(View):
 
 class ReserveRoom(View):
     def get(self, request, room_id):
-        context = {'room': Room.objects.get(id=room_id)}
+        room = Room.objects.get(id=room_id)
+        reservations = room.reservation_set.filter(room=room_id, date__gte=str(datetime.date.today())).order_by('date')
+        context = {'room': room,
+                   'reservations': reservations
+                   }
         return render(request, 'reservation.html', context=context)
 
     def post(self, request, room_id):
@@ -119,7 +125,7 @@ class ReserveRoom(View):
 class RoomDetails(View):
     def get(self, request, room_id):
         room = Room.objects.get(id=room_id)
-        reservations = Reservation.objects.filter(room=room_id, date__gte=str(datetime.date.today())).order_by('date')
+        reservations = room.reservation_set.filter(room=room_id, date__gte=str(datetime.date.today())).order_by('date')
         context = {
             'room': room,
             'reservations': reservations,
