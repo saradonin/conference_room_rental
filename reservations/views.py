@@ -21,7 +21,7 @@ class AddRoom(View):
         projector = request.POST.get('projector')
 
         # validate data
-        if name in [room.name for room in Room.objects.all()]:
+        if Room.objects.filter(name=name).exists():
             message = f"Room {name} already exists!"
         elif not isinstance(capacity, int) or capacity < 0:
             message = f"Room capacity must be positive integer!"
