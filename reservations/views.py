@@ -71,7 +71,7 @@ class ModifyRoom(View):
         room = Room.objects.get(id=room_id)
 
         # validate name
-        if name != room.name and name in [r.name for r in Room.objects.all()]:
+        if name != room.name and Room.objects.filter(name=name).exists():
             context = {
                 'room': room,
                 'message': f"Room {name} already exists!"
