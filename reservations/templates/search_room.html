@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search room</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!-- Nav -->
+<header class="page-header">
+    <div class="container">
+        <h1><a href="/home/">Conference room rental system</a></h1>
+    </div>
+</header>
+
+
+<div class="topnav">
+    <a class="active" href="/home/">Home</a>
+    <a href="/rooms/">Room list</a>
+    <a href="/search/">Search room</a>
+    <a href="/room/new/">Add room</a>
+</div>
+<!-- Nav -->
+<form action="" method="POST">
+
+    {% csrf_token %}
+    <label>Name:
+        <input type="string" name="name">
+    </label></br>
+
+    <label> Minimal capacity:
+        <input type="number" name="capacity">
+    </label></br>
+
+    <label> Projector availability:
+        <label> Yes
+            <input type="radio" name="projector" value="True">
+        </label>
+        <label> No
+            <input type="radio" name="projector" value="False" checked>
+        </label>
+    </label></br>
+
+    <button class="btn" type="submit">Search</button>
+
+</form>
+
+<div class="msg">
+    {{ message }}
+</div>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <span class="text-muted">created by saradonin</span>
+</footer>
+<!-- Footer -->
+</body>
+</html>
