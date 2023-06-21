@@ -138,3 +138,11 @@ class RoomDetails(View):
             'reservations': reservations,
         }
         return render(request, 'room_details.html', context=context)
+
+
+class SearchRoom(View):
+    def get(self, request):
+        return render(request, 'search_room.html')
+
+    def post(self, request):
+        return render(request, 'room_list.html')
