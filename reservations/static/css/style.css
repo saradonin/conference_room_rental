@@ -4,6 +4,7 @@ body {
     margin: 0px;
 }
 
+
 .page-header {
     background-color: #415F9D;
     margin: 0px;
@@ -19,14 +20,13 @@ body {
     text-decoration: none;
 }
 
-/* Add a black background color to the top navigation */
 .topnav {
     margin: 0px;
     background-color: #233B6E;
     overflow: hidden;
 }
 
-/* Style the links inside the navigation bar */
+/* links inside the navigation bar */
 .topnav a {
     float: left;
     color: #f2f2f2;
@@ -67,12 +67,13 @@ table th {
     border-top: 1px solid #fff;
     border-bottom: 1px solid #ccc;
 }
+
 table tr:nth-child(odd) td {
-  background-color: white;
+    background-color: white;
 }
 
 table tr:hover td {
-  background-color: lightsteelblue;
+    background-color: lightsteelblue;
 }
 
 table td {
@@ -80,6 +81,7 @@ table td {
     padding-left: 5px;
     padding-right: 5px;
 }
+
 
 form {
     font-size: 16px;
@@ -91,7 +93,6 @@ input {
     padding: 6px;
     font-size: 16px;
 }
-
 
 
 .btn {
