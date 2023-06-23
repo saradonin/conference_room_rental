@@ -32,7 +32,7 @@ Django 4.2.2
 
 4. Run developement server
 
-```python manage.py runserver```
+    ```python manage.py runserver```
 
 5. Access the application in your web browser at `http://127.0.0.1:8000/` or `http://localhost:8000/`
 
