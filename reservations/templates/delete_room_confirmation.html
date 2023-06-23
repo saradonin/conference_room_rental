@@ -21,31 +21,32 @@
     <a href="/room/new/">Add room</a>
 </div>
 <!-- Nav -->
-
-<table class="table">
-    <thead>
-    <tr>
-        <th colspan="2">Are you sure you want to delete room {{ room.name }}?</th>
-    </tr>
-    </thead>
-    <tbody>
-    <form action="" method="POST">
-        {% csrf_token %}
+<div class="content_2">
+    <table class="table">
+        <thead>
         <tr>
-            <td>
-                <button class="btn" type="submit" name="confirm" value="Yes">
-                    Yes
-                </button>
-            </td>
-            <td>
-                <button class="btn" type="submit" name="confirm" value='No'>
-                    No
-                </button>
-            </td>
+            <th colspan="2">Are you sure you want to delete room {{ room.name }}?</th>
         </tr>
-    </form>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <tr>
+                <td>
+                    <button class="btn" type="submit" name="confirm" value="Yes">
+                        Yes
+                    </button>
+                </td>
+                <td>
+                    <button class="btn" type="submit" name="confirm" value='No'>
+                        No
+                    </button>
+                </td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</div>
 
 <!-- Footer -->
 <footer class="footer">

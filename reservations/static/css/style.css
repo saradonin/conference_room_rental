@@ -73,9 +73,6 @@ table tr:nth-child(odd) td {
     background-color: white;
 }
 
-table tr:hover td {
-    background-color: lightsteelblue;
-}
 
 table td {
     padding: 5px;
