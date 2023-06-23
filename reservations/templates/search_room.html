@@ -27,14 +27,13 @@
 <!--        <input type="string" name="name">-->
 <!--    </label></br>-->
     <label> Minimal capacity:
-        <input type="number" name="capacity">
+        <input type="number" name="capacity" value="{{ calacity }}">
     </label>
 
     <label> Projector availability:
         <input type="checkbox" name="projector" value="True">
     </label>
-
-    <button class="btn"><a href="/search?capacity={{ capacity }}&projector={{ projector }}">Search</a></button>
+    <button class="btn" type="submit">Search</button>
 
 </form>
 
