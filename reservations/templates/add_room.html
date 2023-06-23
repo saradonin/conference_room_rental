@@ -22,27 +22,31 @@
     <a class="active" href="/room/new/">Add room</a>
 </div>
 <!-- Nav -->
-<form action="" method="POST">
 
-    {% csrf_token %}
-    <label>Name:
-        <input type="string" name="name">
-    </label></br>
+<div class="content_2">
+    <form action="" method="POST">
 
-    <label> Capacity:
-        <input type="number" name="capacity">
-    </label></br>
+        {% csrf_token %}
+        <label>Name:
+            <input type="string" name="name">
+        </label></br>
 
-    <label> Projector availability:
-        <input type="checkbox" name="projector" value="True">
-    </label></br>
+        <label> Capacity:
+            <input type="number" name="capacity">
+        </label></br>
 
-    <button class="btn" type="submit">Submit</button>
+        <label> Projector availability:
+            <input type="checkbox" name="projector" value="True">
+        </label>
 
-</form>
+        <button class="btn" type="submit">Submit</button>
 
-<div class="msg">
-    {{ message }}
+    </form>
+
+    <div class="msg">
+        {{ message }}
+    </div>
+
 </div>
 
 

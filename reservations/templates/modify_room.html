@@ -23,32 +23,34 @@
 </div>
 <!-- Nav -->
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <label> Name:
-        <input class="in" type="string" name="name" value="{{ room.name }}">
-    </label></br>
+<div class="content_2">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label> Name:
+            <input class="in" type="string" name="name" value="{{ room.name }}">
+        </label></br>
 
-    <label> Capacity:
-        <input type="number" name="capacity" value="{{ room.capacity }}">
-    </label></br>
+        <label> Capacity:
+            <input type="number" name="capacity" value="{{ room.capacity }}">
+        </label></br>
 
 
-    <label> Projector availability:
-        {% if room.projector_availability == True %}
+        <label> Projector availability:
+            {% if room.projector_availability == True %}
             <input type="checkbox" name="projector" value="True" checked>
-        {% else %}
+            {% else %}
             <input type="checkbox" name="projector" value="False">
-        {% endif %}
+            {% endif %}
 
-    </label></br>
+        </label>
 
-    <button class="btn" type="submit">Submit</button>
-    </br>
-</form>
+        <button class="btn" type="submit">Submit</button>
+        </br>
+    </form>
 
-<div class="msg">
-    {{ message }}
+    <div class="msg">
+        {{ message }}
+    </div>
 </div>
 
 

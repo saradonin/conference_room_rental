@@ -22,54 +22,54 @@
     <a href="/room/new/">Add room</a>
 </div>
 <!-- Nav -->
+<div class="content_2">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Capacity</th>
+            <th>Availability</th>
+            <th>Projector</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Reserve</th>
+        </tr>
+        </thead>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Capacity</th>
-        <th>Availability</th>
-        <th>Projector</th>
-        <th>Details</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>Reserve</th>
-    </tr>
-    </thead>
+        <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.name }}</td>
+            <td>{{ room.capacity }}</td>
+            {% if room.reserved %}
+            <td style="color:red;">Booked</td>
+            {% else %}
+            <td style="color:green;">Available</td>
+            {% endif %}
+            <td>{{ room.projector_availability|yesno:"Yes, No" }}</td>
+            <td><a href="/room/details/{{ room.id }}/">
+                <button class="btn">Details</button>
+            </a></td>
+            <td><a href="/room/modify/{{ room.id }}/">
+                <button class="btn">Edit</button>
+            </a></td>
+            <td><a href="/room/delete/{{ room.id }}/">
+                <button class="btn">Delete</button>
+            </a></td>
+            <td><a href="/room/reserve/{{ room.id }}/">
+                <button class="btn">Reserve</button>
+            </a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td class="msg" colspan="8">No rooms available</td>
+        </tr>
+        {% endfor %}
 
-    <tbody>
-    {% for room in rooms %}
-    <tr>
-        <td>{{ room.name }}</td>
-        <td>{{ room.capacity }}</td>
-        {% if room.reserved %}
-        <td style="color:red;">Booked</td>
-        {% else %}
-        <td style="color:green;">Available</td>
-        {% endif %}
-        <td>{{ room.projector_availability|yesno:"Yes, No"  }}</td>
-        <td><a href="/room/details/{{ room.id }}/">
-            <button class="btn">Details</button>
-        </a></td>
-        <td><a href="/room/modify/{{ room.id }}/">
-            <button class="btn">Edit</button>
-        </a></td>
-        <td><a href="/room/delete/{{ room.id }}/">
-            <button class="btn">Delete</button>
-        </a></td>
-        <td><a href="/room/reserve/{{ room.id }}/">
-            <button class="btn">Reserve</button>
-        </a></td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td class="msg" colspan="8">No rooms available</td>
-    </tr>
-    {% endfor %}
-
-    </tbody>
-</table>
-
+        </tbody>
+    </table>
+</div>
 
 <!-- Footer -->
 <footer class="footer">
