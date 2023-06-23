@@ -145,8 +145,10 @@ class RoomDetails(View):
 
 class SearchRoom(View):
     def get(self, request):
-        min_capacity = request.GET.get('capacity', 0)
-        projector = request.GET.get('projector', False)
+        min_capacity = request.GET.get('capacity')
+        min_capacity = int(min_capacity) if min_capacity else 0
+        projector = request.GET.get('projector')
+        projector = True if projector else False
         context = {
             'rooms': Room.objects.filter(capacity__gte=min_capacity, projector_availability=projector)
         }
