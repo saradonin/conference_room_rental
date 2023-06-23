@@ -22,33 +22,72 @@
     <a href="/room/new/">Add room</a>
 </div>
 <!-- Nav -->
-<form action="" method="POST">
-
-    {% csrf_token %}
-    <label>Name:
-        <input type="string" name="name">
-    </label></br>
-
+<form action="" method="GET">
+<!--    <label>Name:-->
+<!--        <input type="string" name="name">-->
+<!--    </label></br>-->
     <label> Minimal capacity:
         <input type="number" name="capacity">
-    </label></br>
+    </label>
 
     <label> Projector availability:
-        <label> Yes
-            <input type="radio" name="projector" value="True">
-        </label>
-        <label> No
-            <input type="radio" name="projector" value="False" checked>
-        </label>
-    </label></br>
+        <input type="checkbox" name="projector" value="True">
+    </label>
 
-    <button class="btn" type="submit">Search</button>
+    <button class="btn"><a href="/search?capacity={{ capacity }}&projector={{ projector }}">Search</a></button>
 
 </form>
 
 <div class="msg">
     {{ message }}
 </div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Availability</th>
+        <th>Projector</th>
+        <th>Details</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Reserve</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for room in rooms %}
+    <tr>
+        <td>{{ room.name }}</td>
+        <td>{{ room.capacity }}</td>
+        {% if room.reserved %}
+        <td style="color:red;">Booked</td>
+        {% else %}
+        <td style="color:green;">Available</td>
+        {% endif %}
+        <td>{{ room.projector_availability|yesno:"Yes, No"  }}</td>
+        <td><a href="/room/details/{{ room.id }}/">
+            <button class="btn">Details</button>
+        </a></td>
+        <td><a href="/room/modify/{{ room.id }}/">
+            <button class="btn">Edit</button>
+        </a></td>
+        <td><a href="/room/delete/{{ room.id }}/">
+            <button class="btn">Delete</button>
+        </a></td>
+        <td><a href="/room/reserve/{{ room.id }}/">
+            <button class="btn">Reserve</button>
+        </a></td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="6">No rooms available</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
 
 
 <!-- Footer -->
