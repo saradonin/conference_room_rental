@@ -145,15 +145,27 @@ class RoomDetails(View):
 
 class SearchRoom(View):
     def get(self, request):
+        # get input
         min_capacity = request.GET.get('capacity')
         min_capacity = int(min_capacity) if min_capacity else 0
         projector = request.GET.get('projector')
         projector = True if projector else False
+
+        # check availability
         rooms = Room.objects.all()
         for room in rooms:
             reservation_dates = [reservation.date for reservation in room.reservation_set.all()]
             room.reserved = datetime.date.today() in reservation_dates
+
+        if min_capacity:
+            rooms = Room.objects.filter(capacity__gte=min_capacity)
+        if projector:
+            rooms = Room.objects.filter(projector_availability=projector)
+        if min_capacity and projector:
+            rooms = Room.objects.filter(capacity__gte=min_capacity, projector_availability=projector)
+
         context = {
-            'rooms': Room.objects.filter(capacity__gte=min_capacity, projector_availability=projector)
+            'rooms': rooms,
+            'date': datetime.date.today()
         }
         return render(request, 'search_room.html', context=context)
