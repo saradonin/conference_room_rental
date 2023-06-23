@@ -149,6 +149,10 @@ class SearchRoom(View):
         min_capacity = int(min_capacity) if min_capacity else 0
         projector = request.GET.get('projector')
         projector = True if projector else False
+        rooms = Room.objects.all()
+        for room in rooms:
+            reservation_dates = [reservation.date for reservation in room.reservation_set.all()]
+            room.reserved = datetime.date.today() in reservation_dates
         context = {
             'rooms': Room.objects.filter(capacity__gte=min_capacity, projector_availability=projector)
         }
