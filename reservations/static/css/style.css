@@ -109,6 +109,35 @@ input {
     color: red;
 }
 
+
+.content {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    height: 100vh;
+    text-align: center;
+    margin: 0px;
+}
+
+.content h2 {
+    font-size: 32px;
+}
+
+.content li {
+    font-size: 18px;
+    text-align: left;
+}
+
+.gallery {
+    display: flex;
+    justify-content: stretch;
+}
+
+.img {
+    max-width: 100%;
+    height: auto;
+}
+
 .footer {
     position: fixed;
     left: 0;
