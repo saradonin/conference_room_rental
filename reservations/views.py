@@ -19,6 +19,7 @@ class AddRoom(View):
         name = request.POST.get('name')
         capacity = int(request.POST.get('capacity'))
         projector = request.POST.get('projector')
+        projector = False if not projector else True
 
         # validate data
         if Room.objects.filter(name=name).exists():
@@ -142,7 +143,6 @@ class RoomDetails(View):
 
 class SearchRoom(View):
     def get(self, request):
+
         return render(request, 'search_room.html')
 
-    def post(self, request):
-        return render(request, 'room_list.html')
