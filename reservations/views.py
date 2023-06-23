@@ -68,6 +68,8 @@ class ModifyRoom(View):
         name = request.POST.get('name')
         capacity = int(request.POST.get('capacity'))
         projector = request.POST.get('projector')
+        projector = request.POST.get('projector')
+        projector = False if not projector else True
         room = Room.objects.get(id=room_id)
 
         # validate name
