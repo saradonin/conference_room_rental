@@ -17,14 +17,15 @@ class AddRoom(View):
     def post(self, request):
         # get input data
         name = request.POST.get('name')
-        capacity = int(request.POST.get('capacity'))
+        capacity = request.POST.get('capacity')
+        capacity = int(capacity) if capacity else 0
         projector = request.POST.get('projector')
         projector = False if not projector else True
 
         # validate data
         if Room.objects.filter(name=name).exists():
             message = f"Room {name} already exists!"
-        elif not isinstance(capacity, int) or capacity < 0:
+        elif not isinstance(capacity, int) or capacity <= 0:
             message = f"Room capacity must be positive integer!"
         else:
             # add room to database
@@ -66,8 +67,8 @@ class ModifyRoom(View):
     def post(self, request, room_id):
         # get input data
         name = request.POST.get('name')
-        capacity = int(request.POST.get('capacity'))
-        projector = request.POST.get('projector')
+        capacity = request.POST.get('capacity')
+        capacity = int(capacity) if capacity else 0
         projector = request.POST.get('projector')
         projector = False if not projector else True
         room = Room.objects.get(id=room_id)
