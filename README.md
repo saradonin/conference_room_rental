@@ -5,7 +5,7 @@
 ### Features: ###
 
 1. Conference room booking: You can view available conference rooms and book them for specific dates.
-2. Room availability management: You can add, edit, and delete conference rooms.
+2. Room management: You can add, edit, and delete conference rooms.
 3. Search and filtering: You can search for available conference rooms based on criteria like capacity and projector
    availability.
 4. Database: By default, the application uses SQLite as the database. You can change the database configuration in the
