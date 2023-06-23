@@ -19,12 +19,20 @@ Django 4.2.2
 ### How to run ###
 
 1. Clone the repository to your local machine.
+
    ```git clone https://github.com/saradonin/conference_room_rental```
+
 2. Install the required dependencies:
+
    ```pip install -r requirements.txt```
+
 3. Set up the database
+
    ```python manage.py migrate```
-   Run developement server
-3. ```python manage.py runserver```
-4. Access the application in your web browser at `http://127.0.0.1:8000/` or `http://localhost:8000/`
+
+4. Run developement server
+
+```python manage.py runserver```
+
+5. Access the application in your web browser at `http://127.0.0.1:8000/` or `http://localhost:8000/`
 
