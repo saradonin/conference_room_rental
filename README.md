@@ -14,7 +14,7 @@
 ### Prerequisites ###
 
 Python 3.x  
-Django 4.x
+Django 4.2.2
 
 ### How to run ###
 
