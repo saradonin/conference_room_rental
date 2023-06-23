@@ -157,12 +157,13 @@ class SearchRoom(View):
             reservation_dates = [reservation.date for reservation in room.reservation_set.all()]
             room.reserved = datetime.date.today() in reservation_dates
 
+        # filter rooms
         if min_capacity:
-            rooms = Room.objects.filter(capacity__gte=min_capacity)
+            rooms = rooms.filter(capacity__gte=min_capacity)
         if projector:
-            rooms = Room.objects.filter(projector_availability=projector)
+            rooms = rooms.filter(projector_availability=projector)
         if min_capacity and projector:
-            rooms = Room.objects.filter(capacity__gte=min_capacity, projector_availability=projector)
+            rooms = rooms.filter(capacity__gte=min_capacity, projector_availability=projector)
 
         context = {
             'rooms': rooms,
