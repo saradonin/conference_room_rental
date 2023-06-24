@@ -42,6 +42,7 @@ class AddRoom(View):
 
     :template:`add_room.html`
     """
+
     def get(self, request):
         return render(request, 'add_room.html')
 
@@ -87,6 +88,7 @@ class RoomList(View):
 
     :template:`room_list.html`
     """
+
     def get(self, request):
         rooms = Room.objects.all().order_by("name")
         for room in rooms:
@@ -123,6 +125,7 @@ class DeleteRoom(View):
     POST:
     None
     """
+
     def get(self, request, room_id):
         context = {'room': Room.objects.get(id=room_id)}
         return render(request, 'delete_room_confirmation.html', context=context)
@@ -170,6 +173,7 @@ class ModifyRoom(View):
        POST:
        None
        """
+
     def get(self, request, room_id):
         context = {'room': Room.objects.get(id=room_id)}
         return render(request, 'modify_room.html', context=context)
@@ -208,6 +212,38 @@ class ModifyRoom(View):
 
 
 class ReserveRoom(View):
+    """
+        Display the room reservation page and handle room reservations.
+
+        **GET:**
+
+        Display the room reservation page for the specified room.
+
+        **POST:**
+
+        Create a reservation for the specified room with the provided input data.
+
+        **Context**
+
+        GET:
+        ``room``
+            The room object for which the reservation is being made.
+
+        ``reservations``
+            A queryset containing future reservations for the room, ordered by date.
+
+        POST:
+        No specific context variables are returned.
+
+        **Template:**
+
+        GET:
+        :template:`reservation.html`
+
+        POST:
+        None
+        """
+
     def get(self, request, room_id):
         room = Room.objects.get(id=room_id)
         reservations = room.reservation_set.filter(room=room_id, date__gte=str(datetime.date.today())).order_by('date')
@@ -244,6 +280,26 @@ class ReserveRoom(View):
 
 
 class RoomDetails(View):
+    """
+    Display details of a room including its reservations.
+
+    **GET:**
+
+    Fetch the details of the specified room and its reservations.
+
+    **Context**
+
+    ``room``
+        The room object with its details.
+
+    ``reservations``
+        A queryset containing future reservations for the room, ordered by date.
+
+    **Template:**
+
+    :template:`room_details.html`
+    """
+
     def get(self, request, room_id):
         room = Room.objects.get(id=room_id)
         reservations = room.reservation_set.filter(room=room_id, date__gte=str(datetime.date.today())).order_by('date')
@@ -255,6 +311,27 @@ class RoomDetails(View):
 
 
 class SearchRoom(View):
+    """
+    Display search results for available rooms based on user input.
+
+    **GET:**
+
+    Fetch rooms based on the provided search criteria.
+
+    **Context**
+
+    ``rooms``
+        A queryset containing the rooms that match the search criteria.
+
+        Each room object in the queryset has an additional attribute:
+        ``reserved``
+            A boolean indicating whether the room is reserved for today's date.
+
+    **Template:**
+
+    :template:`search_room.html`
+    """
+
     def get(self, request):
         # get input
         min_capacity = request.GET.get('capacity')
