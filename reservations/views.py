@@ -9,10 +9,6 @@ import datetime
 def home(request):
     """
     Display the home page.
-
-    **Template:**
-
-    :template:`home.html`
     """
     return render(request, 'home.html')
 
@@ -20,27 +16,6 @@ def home(request):
 class AddRoom(View):
     """
     Display the Add Room page and handle room creation.
-
-    **GET:**
-
-    Display the Add Room page.
-
-    **POST:**
-
-    Create a new room with the provided input data.
-
-    **Context**
-
-    GET:
-    No specific context variables are required.
-
-    POST:
-    ``message``
-        A message indicating the result of the room creation process.
-
-    **Template:**
-
-    :template:`add_room.html`
     """
 
     def get(self, request):
@@ -70,23 +45,6 @@ class AddRoom(View):
 class RoomList(View):
     """
     Display a list of rooms.
-
-    **GET:**
-
-    Fetch all rooms from the database and render the room list page.
-
-    **Context**
-
-    ``rooms``
-        A queryset containing all the rooms in the database, ordered by name.
-
-        Each room object in the queryset has an additional attribute:
-    ``reserved``
-        A boolean indicating whether the room is reserved for today's date.
-
-    **Template:**
-
-    :template:`room_list.html`
     """
 
     def get(self, request):
@@ -100,30 +58,6 @@ class RoomList(View):
 class DeleteRoom(View):
     """
     Display confirmation to delete a room and handle room deletion.
-
-    **GET:**
-
-    Display a confirmation page to delete the specified room.
-
-    **POST:**
-
-    Delete the specified room if the user confirms.
-
-    **Context**
-
-    GET:
-    ``room`` The room object to be deleted.
-
-    POST:
-    No specific context variables are returned.
-
-    **Template:**
-
-    GET:
-    :template:`delete_room_confirmation.html`
-
-    POST:
-    None
     """
 
     def get(self, request, room_id):
@@ -142,37 +76,8 @@ class DeleteRoom(View):
 
 class ModifyRoom(View):
     """
-       Display the room modification page and handle room updates.
-
-       **GET:**
-
-       Display the room modification page for the specified room.
-
-       **POST:**
-
-       Update the room with the provided input data.
-
-       **Context**
-
-       GET:
-       ``room``
-           The room object to be modified.
-
-       POST:
-       ``room``
-           The updated room object.
-
-       ``message``
-           A message indicating the result of the room modification process.
-
-       **Template:**
-
-       GET:
-       :template:`modify_room.html`
-
-       POST:
-       None
-       """
+    Display the room modification page and handle room updates.
+    """
 
     def get(self, request, room_id):
         context = {'room': Room.objects.get(id=room_id)}
@@ -213,36 +118,8 @@ class ModifyRoom(View):
 
 class ReserveRoom(View):
     """
-        Display the room reservation page and handle room reservations.
-
-        **GET:**
-
-        Display the room reservation page for the specified room.
-
-        **POST:**
-
-        Create a reservation for the specified room with the provided input data.
-
-        **Context**
-
-        GET:
-        ``room``
-            The room object for which the reservation is being made.
-
-        ``reservations``
-            A queryset containing future reservations for the room, ordered by date.
-
-        POST:
-        No specific context variables are returned.
-
-        **Template:**
-
-        GET:
-        :template:`reservation.html`
-
-        POST:
-        None
-        """
+    Display the room reservation page and handle room reservations.
+    """
 
     def get(self, request, room_id):
         room = Room.objects.get(id=room_id)
@@ -282,22 +159,6 @@ class ReserveRoom(View):
 class RoomDetails(View):
     """
     Display details of a room including its reservations.
-
-    **GET:**
-
-    Fetch the details of the specified room and its reservations.
-
-    **Context**
-
-    ``room``
-        The room object with its details.
-
-    ``reservations``
-        A queryset containing future reservations for the room, ordered by date.
-
-    **Template:**
-
-    :template:`room_details.html`
     """
 
     def get(self, request, room_id):
@@ -313,23 +174,6 @@ class RoomDetails(View):
 class SearchRoom(View):
     """
     Display search results for available rooms based on user input.
-
-    **GET:**
-
-    Fetch rooms based on the provided search criteria.
-
-    **Context**
-
-    ``rooms``
-        A queryset containing the rooms that match the search criteria.
-
-        Each room object in the queryset has an additional attribute:
-        ``reserved``
-            A boolean indicating whether the room is reserved for today's date.
-
-    **Template:**
-
-    :template:`search_room.html`
     """
 
     def get(self, request):
