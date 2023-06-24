@@ -21,37 +21,44 @@
     <a href="/room/new/">Add room</a>
 </div>
 <!-- Nav -->
+
+<!-- Details Table -->
 <div class="content_2">
     <table class="table">
         <thead>
         <tr>
-            <th colspan="3">Room details</th>
+            <th colspan="6">Room details</th>
+
+        </tr>
+        <tr>
+            <th>Name:</th>
+            <th>Capacity:</th>
+            <th>Projector availability:</th>
+            <th colspan="3">Actions</th>
         </tr>
         </thead>
-        <tbody>
 
+        <tbody>
         <tr>
-            <td>Name:</td>
             <td>{{ room.name }}</td>
+            <td>{{ room.capacity }}</td>
+            <td>{{ room.projector_availability }}</td>
             <td><a href="/room/modify/{{ room.id }}/">
                 <button class="btn">Edit</button>
             </a></td>
-        </tr>
-        <tr>
-            <td>Capacity:</td>
-            <td>{{ room.capacity }}</td>
             <td><a href="/room/delete/{{ room.id }}/">
                 <button class="btn">Delete</button>
             </a></td>
-        </tr>
-        <tr>
-            <td>Projector availability:</td>
-            <td>{{ room.projector_availability }}</td>
             <td><a href="/room/reserve/{{ room.id }}/">
                 <button class="btn">Reserve</button>
             </a></td>
+        </tr>
         </tbody>
+    </table>
 
+
+    <!-- Reservations Table -->
+    <table class="table">
         <thead>
         <tr>
             <th colspan="3">Reservations</th>
@@ -72,8 +79,6 @@
             <td colspan="3">No active reservations</td>
         </tr>
         {% endfor %}
-
-
         </tbody>
     </table>
 </div>
