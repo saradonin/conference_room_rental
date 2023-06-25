@@ -190,8 +190,7 @@ class SearchRoom(View):
             rooms = rooms.filter(capacity__gte=min_capacity)
         if projector:
             rooms = rooms.filter(projector_availability=projector)
-        if min_capacity and projector:
-            rooms = rooms.filter(capacity__gte=min_capacity, projector_availability=projector)
+
 
         # check availability
         for room in rooms:
