@@ -178,6 +178,7 @@ class SearchRoom(View):
 
     def get(self, request):
         # get input
+        name = request.GET.get('name')
         min_capacity = request.GET.get('capacity')
         min_capacity = int(min_capacity) if min_capacity else 0
         projector = request.GET.get('projector')
@@ -186,6 +187,8 @@ class SearchRoom(View):
         rooms = Room.objects.all()
 
         # filter rooms
+        if name:
+            rooms = rooms.filter(name__contains=name)
         if min_capacity:
             rooms = rooms.filter(capacity__gte=min_capacity)
         if projector:
