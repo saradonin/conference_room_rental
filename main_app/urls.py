@@ -27,14 +27,14 @@ from reservations.views import SearchRoom
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home),
-    path('', home),
-    path('room/new/', AddRoom.as_view()),
-    path('rooms/', RoomList.as_view()),
+    path('home/', home, name='home'),
+    path('', home, name='home'),
+    path('room/new/', AddRoom.as_view(), name='new-room'),
+    path('rooms/', RoomList.as_view(), name='rooms'),
     path('room/delete/<int:room_id>/', DeleteRoom.as_view()),
     path('room/modify/<int:room_id>/', ModifyRoom.as_view()),
     path('room/reserve/<int:room_id>/', ReserveRoom.as_view()),
     path('room/details/<int:room_id>/', RoomDetails.as_view()),
-    path('search/', SearchRoom.as_view())
+    path('search/', SearchRoom.as_view(), name='search-room')
 
 ]
