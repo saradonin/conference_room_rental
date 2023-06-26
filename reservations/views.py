@@ -69,9 +69,9 @@ class DeleteRoom(View):
         room = Room.objects.get(id=room_id)
         if confirm == "Yes":
             room.delete()
-            return redirect("/rooms/")
+            return redirect("rooms")
         else:
-            return redirect("/rooms/")
+            return redirect("rooms")
 
 
 class ModifyRoom(View):
@@ -113,7 +113,7 @@ class ModifyRoom(View):
         room.capacity = capacity
         room.projector_availability = projector
         room.save()
-        return redirect("/rooms/")
+        return redirect("rooms")
 
 
 class ReserveRoom(View):
@@ -153,7 +153,7 @@ class ReserveRoom(View):
 
         # create object
         Reservation.objects.create(room=room, date=reservation_date, comment=comment)
-        return redirect("/rooms/")
+        return redirect("rooms")
 
 
 class RoomDetails(View):
