@@ -36,3 +36,4 @@ Django 4.2.2
 
 5. Access the application in your web browser at `http://127.0.0.1:8000/` or `http://localhost:8000/`
 
+![conference_room_rental](https://github.com/saradonin/conference_room_rental/assets/124811561/97fb014c-27f7-4cb3-a8ce-2a7fc4654bd7)
